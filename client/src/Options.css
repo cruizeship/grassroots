@@ -1,10 +1,19 @@
 .quiz-container {
     height: 100%;
     width: 100%;
+    background: red;
+    display: flex;
+    flex-direction: column;
+}
+
+.options-container {
+    display:flex;
+    flex: 1
 }
 
 .options {
     background : white;
+    flex: 1;
     color: black;
     border: 3px solid gray;
     border-radius: 5px;

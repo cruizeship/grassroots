@@ -16,7 +16,7 @@ function Landing() {
     };
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
+    <div style={{ flex:'2', alignItems: 'center', height:"100%"}}>
       <Options />
     </div>
   );
