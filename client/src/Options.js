@@ -27,15 +27,16 @@ export const options = ['Crime and Public Safety', 'Local Government and Politic
             setSelectedAnswers([...selectedAnswers, answer])
         }
         
-      console.log(selectedAnswers);
-      
     }
+
+    const firstRow = options.map(i => i).splice(0,5);
+    const secondRow = options.map(i => i).splice(5,5);
   
     return (
       <div className="quiz-container">
         <h2>{title}</h2>
         <div className="options-container">
-          {options.map((answer, index) => (
+          {firstRow.map((answer, index) => (
             <div
               onClick={() => onAnswerSelected(answer, index)}
               key={index}
@@ -44,8 +45,16 @@ export const options = ['Crime and Public Safety', 'Local Government and Politic
             </div>
           ))}
         </div>
-        <div className="options-container"></div>
-        <div className="options-container"></div>
+        <div className="options-container">
+            {secondRow.map((answer, index) => (
+                <div
+                onClick={() => onAnswerSelected(answer, index)}
+                key={index}
+                className={selectedAnswers.includes(answer) ? 'selected-answer options' : 'options'}>
+                {answer}
+                </div>
+            ))}
+        </div>
       </div>
     )
   }
