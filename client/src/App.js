@@ -1,4 +1,6 @@
+import React from 'react'
 import {useEffect, useState} from "react";
+import Landing from './Landing';
 const API_URL = process.env.REACT_APP_API;
 
 function App() {
@@ -14,10 +16,21 @@ function App() {
     getData();
   }, []); 
 
+  const styles = { 
+
+    backgroundColor: 'blue', 
+   
+    color: 'white', 
+   
+    fontSize: '16px', 
+   
+   }; 
+
   return (
     <>
-      <h1>MERN App!</h1>
-      <p>Data from server: {data}</p>
+        <Landing />
+        <h1>MERN App!</h1>
+        <p>Data from server: {data}</p>
     </>
   );
 }

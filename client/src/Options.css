@@ -1,0 +1,16 @@
+.quiz-container {
+    height: 100%;
+    width: 100%;
+}
+
+.options {
+    background : white;
+    color: black;
+    border: 3px solid gray;
+    border-radius: 5px;
+}
+
+.selected-answer {
+    background: #ffd6ff !important;
+    border: 3px solid blue !important;
+  }
