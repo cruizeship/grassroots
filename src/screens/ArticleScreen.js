@@ -6,10 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 function ArticleScreen() {
-    const [prompt, setPrompt] = useState("");
-    const [response, setResponse] = useState("");
 
+    const location = useLocation();
     const navigate = useNavigate();
+
+    const { headline, imageLink, body} = location.state;
 
     const handleSubmit = () => {
         navigate('/feed');
@@ -22,13 +23,17 @@ function ArticleScreen() {
         <button className="back-button" onClick={handleSubmit}>
                 <FontAwesomeIcon icon={faArrowLeft} /> Back
             </button>
-          <h1>2023 APEC Summit in San Francisco</h1>
+          <h1>f"{headline}"</h1>
         </header>
         <div className="content">
           <div className="article">
             <div className="image-and-key-takeaways">
-              <img src="path/to/your/image.png" alt="Image not Found" />
+              <img src={imageLink} alt="Image not Found" />
               <section className="key-takeaways">
+
+                <h2>{body}</h2>
+
+
                 <h2 className="key-takeaways-title">APEC Summit Details:</h2>
                 <ul>
                   <li className="text">The United States hosts the annual APEC summit for the first time since 2011.</li>

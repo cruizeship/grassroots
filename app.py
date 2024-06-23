@@ -90,7 +90,7 @@ def run_script():
     if not selected_topics:
         return jsonify({"error": "No topics provided"}), 400
 
-    location = "Belmont"
+    location = "San Francisco Bay Area"
     num_results = 25
     all_articles = []
 

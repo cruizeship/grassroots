@@ -14,7 +14,8 @@ function App() {
                 <Route path="/" element={<HomeScreen />} />
                 <Route path="/loading" element={<LoadingScreen />} />
                 <Route path="/feed" element={<FeedScreen />} />
-                <Route path="/article/:articleId" element={<ArticleScreen />} />
+                <Route path="/article" element={<ArticleScreen />} />
+                <Route path = "/generating" element={<GeneratingScreen />} />
             </Routes>
         </Router>
     );

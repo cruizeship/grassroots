@@ -11,6 +11,14 @@ function FeedScreen() {
     const column1 = articles.slice(0, Math.ceil(articles.length / 2));
     var temp = column1.length;
     const column2 = articles.slice(Math.ceil(articles.length / 2));
+    
+    const navigateToArticle = (article) => {
+        history.push('/article', {
+            headline: article.headline,
+            links: article.links,
+            imageLink: article.imageLink
+        });
+    };
 
     return (
         <div className="feed-screen">
@@ -22,8 +30,9 @@ function FeedScreen() {
                             alt={`Article ${index + 1}`}
                             className="article-image"
                         />
-                        <h2 className="article-headline">{article.headline}</h2>
-                
+                        <a href="#" onClick={() => navigateToArticle(article)}>
+                            <h2 className="article-headline">{article.headline}</h2>
+                        </a>                
                     </div>
                 ))*/}
                 <div className="grid-column">
