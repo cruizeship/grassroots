@@ -1,0 +1,23 @@
+/* FeedScreen.css */
+.feed-page {
+    padding: 20px;
+}
+
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.article-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+}
+
+.article-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}

@@ -1,26 +1,27 @@
 // screens/FeedScreen.js
 import React from 'react';
-import { Link } from 'react-router-dom';
-
-const articles = [
-  { id: '1', title: 'Article 1' },
-  { id: '2', title: 'Article 2' },
-  { id: '3', title: 'Article 3' },
-];
+import { useLocation } from 'react-router-dom';
+import './FeedScreen.css';
 
 function FeedScreen() {
-  return (
-    <div>
-      <h1>Feed Screen</h1>
-      <ul>
-        {articles.map(article => (
-          <li key={article.id}>
-            <Link to={`/article/${article.id}`}>{article.title}</Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+    const location = useLocation();
+    const { articles } = location.state || { articles: [] };
+
+    return (
+        <div className="feed-page">
+            <h1>Feed Screen</h1>
+            <div className="article-grid">
+                {articles.map((article, index) => (
+                    <div key={index} className="article-card">
+                        <img src={article.image_url} alt={article.headline} />
+                        <h2>{article.headline}</h2>
+                        <p>Article Content...</p>
+                        <a href="#">Read More</a>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
 }
 
 export default FeedScreen;
