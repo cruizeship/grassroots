@@ -7,6 +7,14 @@ function FeedScreen() {
     const location = useLocation();
     const { articles } = location.state;
 
+    const navigateToArticle = (article) => {
+        history.push('/article', {
+            headline: article.headline,
+            links: article.links,
+            imageLink: article.imageLink
+        });
+    };
+
     return (
         <div className="feed-screen">
             <div className="article-grid">
@@ -17,8 +25,9 @@ function FeedScreen() {
                             alt={`Article ${index + 1}`}
                             className="article-image"
                         />
-                        <h2 className="article-headline">{article.headline}</h2>
-                
+                        <a href="#" onClick={() => navigateToArticle(article)}>
+                            <h2 className="article-headline">{article.headline}</h2>
+                        </a>                
                     </div>
                 ))}
         </div>
