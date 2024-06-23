@@ -68,6 +68,20 @@ def fetch_headline_image(query):
         return links[1]
     else:
         return links[0]
+    
+def fetch_high_res_image(query):
+    cse_id = "a4046e53171224720"
+    api_key = "AIzaSyACbz9sKwTad1zePq5jhnq6825EDL6-cVs"
+
+    url = f"https://www.googleapis.com/customsearch/v1?q={query}&num=1&start=1&imgSize=huge&searchType=image&key={api_key}&cx={cse_id}"
+
+    response = requests.get(url)
+    response.raise_for_status()
+
+    links = response.json()
+    imageLink = links['items'][0]['link']
+
+    return imageLink
 
 @app.route('/run-script', methods=['POST'])
 def run_script():
@@ -101,7 +115,7 @@ def run_script():
         response_tuples = ast.literal_eval(response_content)
         for event in response_tuples:
             
-            event.append((fetch_headline_image(event[0])))
+            event.append((fetch_high_res_image(event[0])))
 
         return jsonify({'headlines': response_tuples})
     except ValueError:
