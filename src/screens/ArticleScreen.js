@@ -13,7 +13,13 @@ function ArticleScreen() {
     console.log(location.state);
 
     const summaryData = location.state;
-    const articles = summaryData.articles
+    const articles = summaryData.articles;
+    console.log(summaryData);
+    console.log(summaryData.sources);
+    const links = summaryData.links;
+
+    console.log(links);
+
 
     const handleSubmit = () => {
         navigate('/feed', { state: { articles } });
@@ -52,6 +58,16 @@ function ArticleScreen() {
                 <img src={summaryData.imageLink} alt="Image not Found" />
                 <p>{summaryData.articleText}</p>
             </div>
+            <div>
+            <h1>Further Readings:</h1>
+            <ul>
+                {links.map((link, index) => (
+                    <li key={index}>
+                        <a href={link}>{link}</a>
+                    </li>
+                ))}
+            </ul>
+        </div>
           </div>
         </div>
       </div>

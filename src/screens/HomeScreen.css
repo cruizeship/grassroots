@@ -9,13 +9,19 @@ body {
 }
 
 .home-page p {
-    font-size: 24px; /* Increase font size */
+    margin-top: -50px;
+    font-size: 40px; /* Increase font size */
     font-weight: bold; /* Add bold font weight */
-    color: var(--white); /* Adjust text color */
+    color: green; /* Adjust text color */
     letter-spacing: 2px; /* Increase letter spacing */
     margin-bottom: 30px; /* Increase bottom margin for spacing */
 }
 
+.subtitle-text {
+    color: var(--brown);
+    font-size: 35px;
+    text-shadow: 10px 10px 20px lightgreen;
+}
 .topic-buttons {
     margin: 40px auto;
     display: flex;
@@ -79,16 +85,18 @@ body {
     align-items: center; 
     justify-content: center; 
     height: 100vh; 
+    margin-top: 150px;
 }
 
 .title-text {
-    margin-top: 0%;
+    margin-top: -150px;
     color: green;
     border: 10px;
     border-color: white;
     font-size: 140px;
-    text-shadow: 40px 40px 30px var(--parchment); 
+    text-shadow: 10px 10px 20px lightgreen; 
 }
+
 .title-page,
 .header-container {
     position: relative; /* Ensure these elements are positioned relative to handle z-index correctly */
@@ -115,24 +123,8 @@ body {
 }
 
 
-.monkey {
-    position: absolute;
-    top: 5%; /* Adjust this to start the monkey higher up the tree */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px; /* Adjust size as needed */
-    height: auto;
-    cursor: pointer;
-    transition: top 1s ease-in-out; /* Smooth transition for sliding down */
-    z-index: 1; /* Ensure the monkey is above other elements */
-}
-
-.monkey.slide-down {
-    top: 90%; /* Adjust this to the desired position when the monkey slides down */
-}
-
 .header-text {
-    color: green;
+    color: var(--brown);
     text-shadow: 20px 20px 18px var(--parchment); 
     font-size: 80px;
     text-align: center; /* Center text horizontally */
@@ -153,20 +145,33 @@ body {
 .tree-container img {
     width: 100%; /* Adjust width to your needs */
     height: auto; /* Maintain aspect ratio */
+    opacity: 20%;
 }
 
 
-.scroll-button2 {
-  margin-top: 15%;
+.scroll-button {
+  margin-top: 10%;
   margin-bottom: 23%;
   font-size: 80px;
   border: 0px;
   color: var(--brown);
 }
 
-.scroll-button2:hover {
-  transform: scale(1.10);
+.scroll-button:hover {
+  transform: scale(1.15);
   cursor:pointer;
 }
 
+.scroll-button2 {
+    margin-top: 15%;
+    margin-bottom: 23%;
+    font-size: 80px;
+    border: 0px;
+    color: var(--brown);
+  }
+  
+  .scroll-button2:hover {
+    transform: scale(1.15);
+    cursor:pointer;
+  }
 

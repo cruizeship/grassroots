@@ -11,8 +11,11 @@ function GeneratingScreen() {
 
     const generateArticles = async () => {
         try {
+            console.log("headline: ")
             console.log(headline)
+            console.log("links: ")
             console.log(links)
+            console.log("image: ")
             console.log(imageLink)
             /*
             const response = await axios.post('http://127.0.0.1:5000/generate-article', { headline, links, imageLink });
@@ -24,7 +27,7 @@ function GeneratingScreen() {
             const response = await axios.post('http://127.0.0.1:5000/generate-article', { headline, links, imageLink });
             //const summaryData = response.data.txt.map(([item]) => ({item}));
             //console.log(summaryData)
-            navigate('/article ', { state: {headline: response.data.txt[0], imageLink: response.data.txt[1], articleText: response.data.txt[2], articles: articles} });
+            navigate('/article ', { state: {headline: response.data.txt[0], imageLink: response.data.txt[1], articleText: response.data.txt[2], articles: articles, links: links}});
         } catch (error) {
             console.error('There was an error!', error);
         }

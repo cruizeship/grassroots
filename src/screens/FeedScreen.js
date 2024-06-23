@@ -7,7 +7,7 @@ import '../variables.css'
 function FeedScreen() {
     const location = useLocation();
     const navigate = useNavigate();
-    const { articles } = location.state;
+    const { articles, place } = location.state;
 
     const column1 = articles.slice(0, Math.ceil(articles.length / 2));
     var temp = column1.length;
@@ -21,7 +21,7 @@ function FeedScreen() {
         });*/
         navigate('/generating', { state: { headline: article.headline,
             links: article.links,
-            imageLink: article.imageLink, articles: articles } });
+            imageLink: article.imageLink, articles: articles} });
     };
 
     return (

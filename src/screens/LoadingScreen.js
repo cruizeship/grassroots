@@ -4,14 +4,17 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import ReactLoading from 'react-loading';
 import axios from 'axios';
 
+
 function LoadingScreen() {
     const navigate = useNavigate();
     const location = useLocation();
     const { selectedTopics, location: selectedLocation } = location.state;
+    
 
 
     const runPythonLoadArticles = async () => {
         try {
+        
             const response = await axios.post('http://127.0.0.1:5000/run-script', { selectedTopics, selectedLocation });
             const articles = response.data.headlines.map(([headline, links, imageLink]) => ({ headline, links, imageLink}));
 
@@ -29,7 +32,7 @@ function LoadingScreen() {
     return (
         <div className="loading-container">
         <ReactLoading className="loading-icon" type="bars" />
-        <h2 style={{textColor:"white"}}>Loading sprouts...</h2>  
+        <h2 style={{textColor:"white"}}>Growing sprouts...</h2>  
         </div>
     );
 }
