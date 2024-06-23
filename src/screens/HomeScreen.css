@@ -76,9 +76,9 @@ body {
 .title-page {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center content horizontally */
-    justify-content: center; /* Center content vertically */
-    height: 100vh; /* Full viewport height */
+    align-items: center; 
+    justify-content: center; 
+    height: 100vh; 
 }
 
 .title-text {
@@ -87,12 +87,12 @@ body {
     border: 10px;
     border-color: white;
     font-size: 140px;
-    text-shadow: 8px 8px 16px var(--parchment); 
+    text-shadow: 40px 40px 30px var(--parchment); 
 }
 .title-page,
 .header-container {
     position: relative; /* Ensure these elements are positioned relative to handle z-index correctly */
-    z-index: 1;
+    z-index: 3;
 }
 .location-search-container  {
     padding: 6px;
@@ -103,9 +103,17 @@ body {
 
 /* Adjust margins to make space for the tree roots */
 .header-container {
-    margin-bottom: 60px;
-    margin-top: 200px; /* Adjust this to position the text and input box correctly */
+    
+    margin-bottom: 20px;
+    margin-top: 20px; /* Adjust this to position the text and input box correctly */
 }
+
+.header-container h1 {
+    justify-content: center;
+    text-align: center;
+    font-size: 60px;
+}
+
 
 .monkey {
     position: absolute;
@@ -125,7 +133,7 @@ body {
 
 .header-text {
     color: green;
-    text-shadow: 8px 8px 16px var(--parchment); 
+    text-shadow: 20px 20px 18px var(--parchment); 
     font-size: 80px;
     text-align: center; /* Center text horizontally */
     margin: 20px 20px; /* Add margin to separate it from other elements */
@@ -149,7 +157,7 @@ body {
 
 .scroll-button2 {
   margin-top: 15%;
-  margin-bottom: 10%;
+  margin-bottom: 23%;
   font-size: 80px;
   border: 0px;
   color: var(--brown);
@@ -159,4 +167,5 @@ body {
   transform: scale(1.10);
   cursor:pointer;
 }
+
 

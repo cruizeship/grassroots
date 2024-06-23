@@ -68,7 +68,6 @@ function HomeScreen() {
     };
 
     const handleLocationSelect = (location) => {
-        setIsMonkeySliding(true);
     };
 
     const handleMonkeyClick = () => {
@@ -87,14 +86,15 @@ function HomeScreen() {
             <div className={`monkey ${isMonkeySliding ? 'slide-down' : ''}`} onClick={handleMonkeyClick}>
                 <img src={monkeyImage} alt="Monkey" />
             </div>
-            <div className="header-container">
-                <h1 className="header-text">First, lay your roots!</h1>
+            <div class="header-container">
+            <h1 className="header-text">First, lay your roots!</h1>
             </div>
             <div className="location-search-container">
                 <LocationSearch onSelect={handleLocationSelect} />
             </div>
             <FontAwesomeIcon className="scroll-button2" onClick={scrollToNextPage2} icon={faChevronDown} />
             <p ref={nextPageRef}>Select a minimum of 3 preferred topics you'd like to see in your feed!</p>
+            
             <div className="topic-buttons">
                 {topics.map((topic, index) => (
                     <button
