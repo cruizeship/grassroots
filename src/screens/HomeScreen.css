@@ -1,29 +1,29 @@
 body {
-  background-color: #0056b3;
+    background-color: #0056b3;
 }
 .home-page {
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
     padding: 20px;
-  }
-  
-  .home-page p {
+}
+
+.home-page p {
     font-size: 24px; /* Increase font size */
     font-weight: bold; /* Add bold font weight */
     color: #e0b439; /* Adjust text color */
     letter-spacing: 2px; /* Increase letter spacing */
     margin-bottom: 30px; /* Increase bottom margin for spacing */
-  }
-  
-  .topic-buttons {
+}
+
+.topic-buttons {
     margin: 40px auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-  }
-  
-  .topic-buttons button {
+}
+
+.topic-buttons button {
     margin: 10px;
     padding: 15px 20px;
     background-color: #e0b439;
@@ -31,37 +31,59 @@ body {
     border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
-  }
-  
-  .topic-buttons button.selected {
+}
+
+.topic-buttons button.selected {
     background-color: #d18433;
-  }
-  
-  .submit-button {
+}
+
+.submit-button {
     margin-top: 20px;
     padding: 15px 30px;
     background-color: #e0b439;
     border: none;
     cursor: pointer;
     font-size: 16px;
-  }
-  
-  .submit-button:hover {
-    background-color: #0056b3;
-  }
+}
 
-  .loading-container {
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+.loading-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh; /* Full viewport height */
     color: white;
-  }
-  
-  .loading-icon {
+}
+
+.loading-icon {
     height: 100px !important;
     width: 100px !important;
     fill: rgb(255, 255, 255) !important;
     margin-bottom: 20px;
+}
+
+.title-page {
+    height: 100%;
+}
+
+.title-text {
+    margin-top: 40%;
+    font-size: 100px;
+}
+
+.scroll-button {
+    margin-top: 25%;
+    margin-bottom: 10%;
+    font-size: 80px;
+    border: 0px;
+    background: rgba(255, 255, 255, 0);
+}
+
+.scroll-button:hover {
+    transform: scale(1.05);
+    cursor: pointer;
   }
