@@ -1,6 +1,8 @@
 // screens/LoadingScreen.js
 import React, { useEffect } from 'react';
+import ReactLoading from "react-loading";
 import { useNavigate, useLocation } from 'react-router-dom';
+import './HomeScreen.css';
 import axios from 'axios';
 
 function LoadingScreen() {
@@ -22,11 +24,12 @@ function LoadingScreen() {
         runPythonLoadArticles();
     }, []); // Run once on component mount
 
-    return (
-        <div>
-            <h1>Loading...</h1>
-        </div>
-    );
+  return (
+    <div className="loading-container">
+        <ReactLoading className="loading-icon" type="bars" />
+        <h2 style={{textColor:"white"}}>Loading text here</h2>  
+    </div>
+  );
 }
 
 export default LoadingScreen;
