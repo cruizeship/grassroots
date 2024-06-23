@@ -76,8 +76,8 @@ function HomeScreen() {
                     </button>
                 ))}
             </div>
-            <button onClick={handleSubmit}>
-                Go to Loading Screen
+            <button className="submit-button" onClick={handleSubmit}>
+                Continue
             </button>
         </div>
     );
