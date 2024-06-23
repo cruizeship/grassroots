@@ -1,39 +1,21 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
-import HomePage from './components/HomePage.js';
-import Article from './components/ArticleScreen.js';
-import './App.css';
-import axios from 'axios';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import HomeScreen from './screens/HomeScreen';
+import LoadingScreen from './screens/LoadingScreen';
+import FeedScreen from './screens/FeedScreen';
+import ArticleScreen from './screens/ArticleScreen';
 
 function App() {
-  const [prompt, setPrompt] = useState("");
-  const [response, setResponse] = useState("");
-
-  const runPythonScript = async () => {
-    try {
-      const response = await axios.post('http://127.0.0.1:5000/run-script', { prompt });
-      console.log(response.data.message); // Log the success message from the backend
-      setResponse(response.data.message);
-    } catch (error) {
-      console.error('There was an error!', error);
-    }
-  };
-
   return (
-    <div className="App">
-      <header className="App-header">  
-        <HomePage></HomePage>
-        <input 
-          type="text" 
-          value={prompt} 
-          onChange={(e) => setPrompt(e.target.value)} 
-          placeholder="Enter your prompt"
-        />
-        <button onClick={runPythonScript}>Run Python Script</button>
-        <p>Response: {response}</p>
-      </header>
-    </div>
-
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomeScreen />} />
+        <Route path="/loading" element={<LoadingScreen />} />
+        <Route path="/feed" element={<FeedScreen />} />
+        <Route path="/article/:articleId" element={<ArticleScreen />} />
+      </Routes>
+    </Router>
   );
 }
 
