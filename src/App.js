@@ -6,6 +6,7 @@ import HomeScreen from './screens/HomeScreen';
 import LoadingScreen from './screens/LoadingScreen';
 import FeedScreen from './screens/FeedScreen';
 import ArticleScreen from './screens/ArticleScreen';
+import GeneratingScreen from './screens/GeneratingScreen';
 
 function App() {
     return (
@@ -14,7 +15,8 @@ function App() {
                 <Route path="/" element={<HomeScreen />} />
                 <Route path="/loading" element={<LoadingScreen />} />
                 <Route path="/feed" element={<FeedScreen />} />
-                <Route path="/article/:articleId" element={<ArticleScreen />} />
+                <Route path="/article" element={<ArticleScreen />} />
+                <Route path = "/generating" element={<GeneratingScreen />} />
             </Routes>
         </Router>
     );

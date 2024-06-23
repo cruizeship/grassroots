@@ -26,14 +26,14 @@ header {
     margin-left: -20px;
 }
 
-.image-and-key-takeaways {
+/*.image-and-key-takeaways {
     display: flex;
     margin-bottom: 20px;
     width: 100%;
-}
+}*/
 
 .image-and-key-takeaways img {
-    width: 60%;
+    width: 50%;
     height: auto;
     margin-right: 20px;
 }
@@ -47,7 +47,7 @@ header {
 }
 
 .text-section {
-    margin-top: 20px;
+    margin-top: 0px;
     width: 100%;
 }
 
@@ -63,7 +63,7 @@ footer {
 }
 
 .text {
-    font-size: 20px
+    font-size: 25px;
 }
 
 .back-button {
@@ -81,4 +81,19 @@ footer {
 
 .back-button:hover {
     transform: scale(1.05)
+}
+
+.image-and-text {
+    margin-top:20px;
+    overflow: hidden;
+    font-size: 20px;
+}
+
+.image-and-text img {
+    float: left;
+    width: 50%;
+    height: auto;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
 }

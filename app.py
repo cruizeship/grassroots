@@ -90,8 +90,8 @@ def run_script():
     if not selected_topics:
         return jsonify({"error": "No topics provided"}), 400
 
-    location = "Belmont"
-    num_results = 25
+    location = "San Francisco Bay Area"
+    num_results = 3
     all_articles = []
 
     for topic in selected_topics:
@@ -115,12 +115,75 @@ def run_script():
         response_tuples = ast.literal_eval(response_content)
         for event in response_tuples:
             
-            event.append((fetch_high_res_image(event[0])))
+            #event.append((fetch_high_res_image(event[0])))
+            event.append((fetch_headline_image(event[0])))
 
         return jsonify({'headlines': response_tuples})
     except ValueError:
         return jsonify({"error": "Failed to parse OpenAI response"}), 500
 
     
+def scrape_article(url):
+    # Send a request to the URL
+    response = requests.get(url)
+
+    # Check if the request was successful
+    # if response.status_code != 200:
+      #  raise Exception(f"Failed to load page {url}, status code: {response.status_code}")
+
+    # Parse the HTML content of the page
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    # Extract the relevant content
+    # This part depends on the structure of the website. We'll use an example of a common structure.
+    article_content = ''
+
+    # Many news websites use <article> tag or specific class names for article content
+    article = soup.find('article')
+    if article:
+        paragraphs = article.find_all('p')
+    else:
+        # Fallback to a generic method, searching for <p> tags within a div with a common class name
+        paragraphs = soup.find_all('p')
+
+    for p in paragraphs:
+        article_content += p.get_text() + '\n'
+
+    return article_content.strip()
+
+def prompt_openai(prompt):
+    api_key = os.getenv('OPENAI_API_KEY')
+    client = OpenAI(api_key=api_key)
+    completion = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {"role": "user", "content": prompt}
+        ]
+    )
+    return completion.choices[0].message.content
+
+@app.route('/generate-article', methods=['POST'])
+def generate_article():
+    input_data = request.json
+    headline = input_data.get("headline")
+    links = input_data.get("links")
+    imageLink = input_data.get("imageLink")
+
+    linkText = ""
+
+    index = 0
+
+    for link in links:
+        linkText += scrape_article(link)
+        index += 1
+        if index >= 3:
+            break
+    
+    articleText = prompt_openai(f"""Summarize the following text. Three sentences on key takeaway on the topic, then three sentences analyzing from multiple perspectives and why the subject is important. Make this flow as a complete paragraph and do not include and breaks or headings in the middle. : {linkText}.
+    at the top."""
+    )
+
+    return jsonify({'txt' : [headline, imageLink, articleText]})
+
 if __name__ == '__main__':
     app.run(debug=True)
