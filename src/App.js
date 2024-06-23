@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import HomePage from './components/HomePage.js';
-import Article from './components/Article.js';
+import Article from './components/ArticleScreen.js';
 import './App.css';
 import axios from 'axios';
 
@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">  
-        {/*<HomePage>/</HomePage>
+        <HomePage></HomePage>
         <input 
           type="text" 
           value={prompt} 
@@ -30,8 +30,7 @@ function App() {
           placeholder="Enter your prompt"
         />
         <button onClick={runPythonScript}>Run Python Script</button>
-        <p>Response: {response}</p>*/}
-        <Article />
+        <p>Response: {response}</p>
       </header>
     </div>
 

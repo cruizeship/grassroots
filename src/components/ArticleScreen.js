@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Article.css";
 import axios from "axios";
 
-function Article() {
+function ArticleScreen() {
     const [prompt, setPrompt] = useState("");
     const [response, setResponse] = useState("");
 
@@ -43,4 +43,4 @@ function Article() {
     );
 }
 
-export default Article;
+export default ArticleScreen;
