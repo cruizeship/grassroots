@@ -59,7 +59,7 @@ function ArticleScreen() {
                 <p>{summaryData.articleText}</p>
             </div>
             <div>
-            <h1>Further Readings:</h1>
+            <h1>Further:</h1>
             <ul>
                 {links.map((link, index) => (
                     <li key={index}>

@@ -64,7 +64,7 @@ function HomeScreen() {
  
     const scrollToNextPage2 = () => {
         window.scrollTo({
-            top: 5300,
+            top: 5240,
             behavior: 'smooth'
         });
     };
