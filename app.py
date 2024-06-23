@@ -40,7 +40,7 @@ def get_news_search_results(query, num_results):
     return articles
 
 def prompt_openai(prompt):
-    api_key = "sk-proj-1s9pouSGtaM4hjZvYk4fT3BlbkFJsyHMBt3ayAB0AkYZTuBO"
+    api_key = os.getenv('OPENAI_API_KEY')
     client = OpenAI(api_key=api_key)
     completion = client.chat.completions.create(
         model="gpt-4o",
