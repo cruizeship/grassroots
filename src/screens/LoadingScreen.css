@@ -1,0 +1,30 @@
+/* screens/LoadingScreen.css */
+
+.loading-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-size: 1.5rem;
+}
+
+.loading-screen p {
+    margin-top: 20px;
+}
+
+.loading-screen button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.loading-screen button:hover {
+    background-color: #2980b9;
+}

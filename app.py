@@ -50,7 +50,6 @@ def prompt_openai(prompt):
     )
     return completion.choices[0].message.content
 
-
 @app.route('/run-script', methods=['POST'])
 def run_script():
     input_data = request.json
