@@ -13,7 +13,7 @@ function FeedScreen() {
                 {articles.map((article, index) => (
                     <div key={index} className={`article-card ${index % 3 === 0 ? 'larger' : ''}`}>
                         <img
-                            src="https://via.placeholder.com/150"
+                            src={article.imageLink}
                             alt={`Article ${index + 1}`}
                             className="article-image"
                         />

@@ -12,7 +12,7 @@ function LoadingScreen() {
     const runPythonLoadArticles = async () => {
         try {
             const response = await axios.post('http://127.0.0.1:5000/run-script', { selectedTopics });
-            const articles = response.data.headlines.map(([headline, links]) => ({ headline, links }));
+            const articles = response.data.headlines.map(([headline, links, imageLink]) => ({ headline, links, imageLink}));
 
             console.log(articles); // Log the articles array
             navigate('/feed', { state: { articles } });

@@ -50,6 +50,25 @@ def prompt_openai(prompt):
     )
     return completion.choices[0].message.content
 
+def fetch_headline_image(query):
+    url = "https://www.google.com/search?q={query}&tbm=isch"
+
+    page = requests.get(url).text
+
+    soup = BeautifulSoup(page, 'html.parser')
+
+    links = []
+
+    for raw_img in soup.find_all('img'):
+        link = raw_img.get('src')
+        if link:
+            links.append(link)
+    
+    if links.len() > 1:
+        return links[1]
+    else:
+        return links[0]
+
 @app.route('/run-script', methods=['POST'])
 def run_script():
     input_data = request.json
@@ -72,16 +91,21 @@ def run_script():
 
     prompt = f"""For the following list, give me a list of important distinct events that are referenced by several articles (i.e. a short blurb). 
     {all_articles} If it's not related to the selected  {selected_topics} and/or it's not in {location}, don't account for it. If it's an opinion article or a guide, don't account for it.
-    It should be formatted as a python array of tuples, with the first item being the event title and the second item the links that pertain to it. The event should be something distinct and not a general topic — i.e. the Golden Gate Bridge has shut down."
+    It should be formatted as a python array of arrays, with the first item being the event title and the second item the links that pertain to it. The event should be something distinct and not a general topic — i.e. the Golden Gate Bridge has shut down."
     Please don't do things like '''python or /n, i should be able to assign the output text to a variable
     """
     
     response_content = prompt_openai(prompt)
+
+    for event in response_content:
+        event.append(fetch_headline_image(event[0]))
+
     try:
         response_tuples = ast.literal_eval(response_content)
         return jsonify({'headlines': response_tuples})
     except ValueError:
         return jsonify({"error": "Failed to parse OpenAI response"}), 500
 
+    
 if __name__ == '__main__':
     app.run(debug=True)

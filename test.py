@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 
 url = "https://www.google.com/search?q=puppies&tbm=isch"
 
-# page = open('tower.html', 'r').read()
 page = requests.get(url).text
 
 soup = BeautifulSoup(page, 'html.parser')
