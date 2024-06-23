@@ -47,7 +47,7 @@ header {
 }
 
 .text-section {
-    margin-top: 20px;
+    margin-top: 0px;
     width: 100%;
 }
 
@@ -63,7 +63,7 @@ footer {
 }
 
 .text {
-    font-size: 20px
+    font-size: 25px;
 }
 
 .back-button {
@@ -84,7 +84,9 @@ footer {
 }
 
 .image-and-text {
+    margin-top:20px;
     overflow: hidden;
+    font-size: 20px;
 }
 
 .image-and-text img {
@@ -92,5 +94,6 @@ footer {
     width: 50%;
     height: auto;
     margin-right: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
 }

@@ -91,7 +91,7 @@ def run_script():
         return jsonify({"error": "No topics provided"}), 400
 
     location = "San Francisco Bay Area"
-    num_results = 5
+    num_results = 3
     all_articles = []
 
     for topic in selected_topics:
@@ -171,14 +171,17 @@ def generate_article():
 
     linkText = ""
 
+    index = 0
+
     for link in links:
         linkText += scrape_article(link)
+        index += 1
+        if index >= 3:
+            break
     
-    articleText = prompt_openai(f"""Summarize the following text. Three to five key takeaway bullet points at the topic, then several subheadings with paragraphs on certain topics. : {linkText}.
+    articleText = prompt_openai(f"""Summarize the following text. Three sentences on key takeaway on the topic, then three sentences analyzing from multiple perspectives and why the subject is important. Make this flow as a complete paragraph and do not include and breaks or headings in the middle. : {linkText}.
     at the top."""
     )
-    print("done with article gen")
-    print(articleText)
 
     return jsonify({'txt' : [headline, imageLink, articleText]})
 

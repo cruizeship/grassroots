@@ -42,10 +42,10 @@ function HomeScreen() {
     };
 
     const handleSubmit = () => {
-        if (selectedTopics.length >= 5) {
+        if (selectedTopics.length >= 3) {
             navigate('/loading', { state: { selectedTopics } });
         } else {
-            alert('Please select ' + (5 - selectedTopics.length) + ' more topics!');
+            alert('Please select ' + (3 - selectedTopics.length) + ' more topics!');
         }
     };
 
@@ -64,7 +64,7 @@ function HomeScreen() {
                 <h1 className="title-text">Grassroots</h1>
                 <FontAwesomeIcon className="scroll-button" onClick={scrollToNextPage} icon={faChevronDown} />
             </div>
-            <p ref={nextPageRef}>Select a minimum of 5 preferred topics you'd like to see in your feed!</p>
+            <p ref={nextPageRef}>Select a minimum of 3 preferred topics you'd like to see in your feed!</p>
             <div className="topic-buttons">
                 {topics.map((topic, index) => (
                     <button
