@@ -146,7 +146,8 @@ body {
     left: 50%;
     transform: translateX(-50%);
     width: 100%; /* Adjust width to your needs */
-    z-index: 0; /* Add this line */
+    z-index: -9; /* Add this line */
+
 }
 
 .tree-container img {

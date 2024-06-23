@@ -7,11 +7,12 @@ import axios from 'axios';
 function LoadingScreen() {
     const navigate = useNavigate();
     const location = useLocation();
-    const { selectedTopics } = location.state;
+    const { selectedTopics, location: selectedLocation } = location.state;
+
 
     const runPythonLoadArticles = async () => {
         try {
-            const response = await axios.post('http://127.0.0.1:5000/run-script', { selectedTopics });
+            const response = await axios.post('http://127.0.0.1:5000/run-script', { selectedTopics, selectedLocation });
             const articles = response.data.headlines.map(([headline, links, imageLink]) => ({ headline, links, imageLink}));
 
             console.log(articles); // Log the articles array

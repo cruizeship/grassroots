@@ -7,6 +7,12 @@
     margin: 20px; /* Adjust margin as needed */
 }
 
+
+.feed-header h1{
+    font-size: 60px;
+    color: var(--green);
+    justify-self: left;
+}
 .header-text {
     font-size: 1.5rem; /* Adjust font size as needed */
     margin-bottom: 20px; /* Add space below the header */
@@ -25,7 +31,7 @@
     justify-content: space-between;
     border-radius: 10px;
     padding: 10px;
-    max-width: 350px;
+    max-width: 500px;
     margin-bottom: 20px;
     background-color: var(--green);
 }

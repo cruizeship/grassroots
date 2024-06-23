@@ -34,6 +34,7 @@ function HomeScreen() {
     const navigate = useNavigate();
     const [selectedTopics, setSelectedTopics] = useState([]);
     const [isMonkeySliding, setIsMonkeySliding] = useState(false);
+    const [location, setLocation] = useState('');
 
     const handleTopicClick = (topic) => {
         if (selectedTopics.includes(topic)) {
@@ -45,7 +46,7 @@ function HomeScreen() {
 
     const handleSubmit = () => {
         if (selectedTopics.length >= 3) {
-            navigate('/loading', { state: { selectedTopics } });
+            navigate('/loading', { state: { selectedTopics, location } });
         } else {
             alert('Please select ' + (3 - selectedTopics.length) + ' more topics!');
         }
@@ -68,6 +69,7 @@ function HomeScreen() {
     };
 
     const handleLocationSelect = (location) => {
+        setLocation(location['name']);
     };
 
     const handleMonkeyClick = () => {
