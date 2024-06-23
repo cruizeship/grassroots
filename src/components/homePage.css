@@ -8,7 +8,7 @@
   .home-page p {
     font-size: 24px; /* Increase font size */
     font-weight: bold; /* Add bold font weight */
-    color: #ab00ee; /* Adjust text color */
+    color: #e0b439; /* Adjust text color */
     letter-spacing: 2px; /* Increase letter spacing */
     margin-bottom: 30px; /* Increase bottom margin for spacing */
   }
@@ -23,20 +23,21 @@
   .topic-buttons button {
     margin: 10px;
     padding: 15px 20px;
-    border: 1px solid #ccc;
+    background-color: #e0b439;
+    border: 0px solid #cccccc;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
   }
   
   .topic-buttons button.selected {
-    background-color: lightgreen;
+    background-color: #d18433;
   }
   
   .submit-button {
     margin-top: 20px;
     padding: 15px 30px;
-    background-color: #007bff;
-    color: white;
+    background-color: #e0b439;
     border: none;
     cursor: pointer;
     font-size: 16px;
