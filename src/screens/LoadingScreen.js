@@ -32,7 +32,7 @@ function LoadingScreen() {
     return (
         <div className="loading-container">
         <ReactLoading className="loading-icon" type="bars" />
-        <h2 style={{textColor:"white"}}>Growing sprouts...</h2>  
+        <h2 style={{textColor:"white"}}>growing sprouts...</h2>  
         </div>
     );
 }

@@ -10,7 +10,7 @@ import './HomeScreen.css';
 const topics = [
     'Local Government',
     'Crime and Public Safety',
-    'Readathon',
+    'Live Music',
     'Transportation',
     'Healthcare',
     'Business and Economy',
@@ -82,7 +82,7 @@ function HomeScreen() {
             </div>
             <div className="title-page">
                 <h1 className="title-text">Grassroots</h1>
-                <h2 className="subtitle-text">Sprout-sized news, diverse views. Powered by LLM's. Built for people.</h2>
+                <h2 className="subtitle-text">Sprout-sized news, diverse views. Powered by LLM's.</h2>
         
                 <FontAwesomeIcon className="scroll-button" onClick={scrollToNextPage} icon={faChevronDown} />
             </div>

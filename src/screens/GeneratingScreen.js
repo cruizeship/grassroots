@@ -40,7 +40,7 @@ function GeneratingScreen() {
     return (
         <div className="loading-container">
         <ReactLoading className="loading-icon" type="bars" />
-        <h2 style={{textColor:"white"}}>Loading sprout...</h2>  
+        <h2 style={{textColor:"white"}}>blooming buds...</h2>  
         </div>
     );
 }

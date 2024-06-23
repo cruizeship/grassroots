@@ -27,7 +27,7 @@ function FeedScreen() {
     return (
         <div className="feed-screen">
             <div className="feed-header">
-                <h1>Your daily sprouts!</h1>
+                <h1>your daily sprouts!</h1>
             </div>
             <div className="article-grid">
                 {/*articles.map((article, index) => (
