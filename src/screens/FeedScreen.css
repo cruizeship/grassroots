@@ -1,23 +1,46 @@
-/* FeedScreen.css */
-.feed-page {
-    padding: 20px;
+/* screens/FeedScreen.css */
+
+.feed-screen {
+    display: flex;
+    justify-content: center;
+    margin: 200px;
 }
 
 .article-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+    gap: 0px;
 }
 
 .article-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 16px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    padding: 10px;
 }
 
-.article-card img {
-    max-width: 100%;
+.article-image {
+    width: 100%;
     height: auto;
-    border-radius: 4px;
+}
+
+.article-headline {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.article-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.article-links li {
+    margin-top: 5px;
+}
+
+/* Make the middle box in each row bigger */
+.article-card.larger {
+    grid-row: span 2; /* Span 2 rows */
 }
