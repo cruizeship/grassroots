@@ -1,7 +1,10 @@
 // screens/HomeScreen.js
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import './HomeScreen.css';
+import '../variables.css'
 
 const topics = [
     'Local Government',
@@ -46,9 +49,22 @@ function HomeScreen() {
         }
     };
 
+    const nextPageRef = useRef(null);
+
+  const scrollToNextPage = () => {
+    window.scrollTo({
+      top: nextPageRef.current.offsetTop,
+      behavior: 'smooth'
+    });
+  };
+
     return (
         <div className="home-page">
-            <p>Select a minimum of 5 preferred topics you'd like to see in your feed!</p>
+            <div className="title-page">
+                <h1 className="title-text">Grassroots</h1>
+                <FontAwesomeIcon className="scroll-button" onClick={scrollToNextPage} icon={faChevronDown} />
+            </div>
+            <p ref={nextPageRef}>Select a minimum of 5 preferred topics you'd like to see in your feed!</p>
             <div className="topic-buttons">
                 {topics.map((topic, index) => (
                     <button
