@@ -1,10 +1,12 @@
-// screens/HomeScreen.js
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import LocationSearch from '../LocationSearch.js';
+import treeImage from '../tree1.png'; // Import the tree image
+import monkeyImage from '../monkey.png'; // Corrected import
+import '../variables.css';
 import './HomeScreen.css';
-import '../variables.css'
 
 const topics = [
     'Local Government',
@@ -26,12 +28,12 @@ const topics = [
     'Technology',
     'Volunteerism and Charity',
     'Local Businesses',
-    'Education'
 ];
 
 function HomeScreen() {
     const navigate = useNavigate();
     const [selectedTopics, setSelectedTopics] = useState([]);
+    const [isMonkeySliding, setIsMonkeySliding] = useState(false);
 
     const handleTopicClick = (topic) => {
         if (selectedTopics.includes(topic)) {
@@ -51,19 +53,47 @@ function HomeScreen() {
 
     const nextPageRef = useRef(null);
 
-  const scrollToNextPage = () => {
-    window.scrollTo({
-      top: nextPageRef.current.offsetTop,
-      behavior: 'smooth'
-    });
-  };
+    const scrollToNextPage = () => {
+        window.scrollTo({
+            top: 750,
+            behavior: 'smooth'
+        });
+    };
+
+    const scrollToNextPage2 = () => {
+        window.scrollTo({
+            top: 5300,
+            behavior: 'smooth'
+        });
+    };
+
+    const handleLocationSelect = (location) => {
+        setIsMonkeySliding(true);
+    };
+
+    const handleMonkeyClick = () => {
+        setIsMonkeySliding(true); // Start the sliding effect
+        setTimeout(() => scrollToNextPage(), 500); // Scroll down after the sliding effect
+    };
 
     return (
         <div className="home-page">
+            <div className="tree-container">
+                <img src={treeImage} alt="Tree" />
+            </div>
             <div className="title-page">
                 <h1 className="title-text">Grassroots</h1>
-                <FontAwesomeIcon className="scroll-button" onClick={scrollToNextPage} icon={faChevronDown} />
             </div>
+            <div className={`monkey ${isMonkeySliding ? 'slide-down' : ''}`} onClick={handleMonkeyClick}>
+                <img src={monkeyImage} alt="Monkey" />
+            </div>
+            <div className="header-container">
+                <h1 className="header-text">First, lay your roots!</h1>
+            </div>
+            <div className="location-search-container">
+                <LocationSearch onSelect={handleLocationSelect} />
+            </div>
+            <FontAwesomeIcon className="scroll-button2" onClick={scrollToNextPage2} icon={faChevronDown} />
             <p ref={nextPageRef}>Select a minimum of 5 preferred topics you'd like to see in your feed!</p>
             <div className="topic-buttons">
                 {topics.map((topic, index) => (
