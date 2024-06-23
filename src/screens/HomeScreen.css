@@ -49,4 +49,19 @@ body {
   .submit-button:hover {
     background-color: #0056b3;
   }
+
+  .loading-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    color: white;
+  }
   
+  .loading-icon {
+    height: 100px !important;
+    width: 100px !important;
+    fill: rgb(255, 255, 255) !important;
+    margin-bottom: 20px;
+  }
