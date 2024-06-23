@@ -1,33 +1,26 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import requests
-from mistralai.client import MistralClient
-from mistralai.models.chat_completion import ChatMessage
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-API_KEY = "f1WKMcmgAeBgZiLNnKvnVXUgqbucBsCS"
-MODEL = "mistral-large-latest"
-
-client = MistralClient(api_key=API_KEY)
-
-def prompt(prompt):
-  chat_response = client.chat(
-      model=MODEL,
-      messages=[ChatMessage(role="user", content=prompt)]
-  )
-  return chat_response.choices[0].message.content
+def generate_articles(selected_topics):
+    articles = []
+    for index, topic in enumerate(selected_topics):
+        headline = f"{topic} Headline #{index+1}"
+        image_url = f"https://via.placeholder.com/150?text={topic}"
+        articles.append({"headline": headline, "image_url": image_url})
+    return articles
 
 @app.route('/run-script', methods=['POST'])
 def run_script():
     input_data = request.json
-    prompt_text = input_data.get('prompt')
-    if not prompt_text:
-        return jsonify({"error": "No prompt provided"}), 400
+    selected_topics = input_data.get('selectedTopics')
+    if not selected_topics:
+        return jsonify({"error": "No topics provided"}), 400
     
-    response_message = prompt(prompt_text)
-    return jsonify({"message": response_message})
+    articles = generate_articles(selected_topics)
+    return jsonify({"articles": articles})
 
 if __name__ == '__main__':
     app.run(debug=True)
