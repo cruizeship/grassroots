@@ -6,6 +6,7 @@ import HomeScreen from './screens/HomeScreen';
 import LoadingScreen from './screens/LoadingScreen';
 import FeedScreen from './screens/FeedScreen';
 import ArticleScreen from './screens/ArticleScreen';
+import GeneratingScreen from './screens/GeneratingScreen';
 
 function App() {
     return (
