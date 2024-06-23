@@ -91,11 +91,11 @@ def run_script():
         return jsonify({"error": "No topics provided"}), 400
 
     location = "San Francisco Bay Area"
-    num_results = 3
+    num_results = len(selected_topics) * 3
     all_articles = []
 
     for topic in selected_topics:
-        query = f"{location} local news in the past week about {topic}"
+        query = f"{location} local news in the past three months about {topic}"
         articles = get_news_search_results(query, num_results)
         if articles:
             all_articles.extend(articles)
@@ -104,9 +104,17 @@ def run_script():
         return jsonify({"error": "No articles found"}), 404
 
     prompt = f"""For the following list, give me a list of important distinct events that are referenced by several articles (i.e. a short blurb). 
-    {all_articles} If it's not related to the selected  {selected_topics} and/or it's not in {location}, don't account for it. If it's an opinion article or a guide, don't account for it.
-    It should be formatted as a python array of arrays, with the first item being the event title and the second item the links that pertain to it. The event should be something distinct and not a general topic — i.e. the Golden Gate Bridge has shut down."
-    Please don't do things like '''python or /n, i should be able to assign the output text to a variable
+    {all_articles}.
+    
+    If it's not significantly related to one of {selected_topics}, skip it. 
+
+    Don't make events that have zero links related to it. Don't make stuff up.
+    
+    If it's an opinion article, guide, or list skip it.
+
+    It should be formatted as a python array of arrays, with the first item being the event title and the second item the links that pertain to it. 
+    
+    Please don't do things like '''python or /n, i should be able to assign the output text to a variable.
     """
     
     response_content = prompt_openai(prompt)
@@ -153,6 +161,7 @@ def scrape_article(url):
 
 def prompt_openai(prompt):
     api_key = os.getenv('OPENAI_API_KEY')
+
     client = OpenAI(api_key=api_key)
     completion = client.chat.completions.create(
         model="gpt-4o",
@@ -178,8 +187,13 @@ def generate_article():
         index += 1
         if index >= 3:
             break
+
     
-    articleText = prompt_openai(f"""Summarize the following text. Three sentences on key takeaway on the topic, then three sentences analyzing from multiple perspectives and why the subject is important. Make this flow as a complete paragraph and do not include and breaks or headings in the middle. : {linkText}.
+    articleText = prompt_openai(f"""Summarize the following text. Three to five sentences at the top summarizing the situation.
+                                
+                                Then, another three to five sentences explaining why it's significant in a different paragraph.
+                                No formatting in markdown or html.
+                                {linkText}.
     at the top."""
     )
 
