@@ -1,0 +1,48 @@
+.home-page {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .home-page p {
+    font-size: 24px; /* Increase font size */
+    font-weight: bold; /* Add bold font weight */
+    color: #ab00ee; /* Adjust text color */
+    letter-spacing: 2px; /* Increase letter spacing */
+    margin-bottom: 30px; /* Increase bottom margin for spacing */
+  }
+  
+  .topic-buttons {
+    margin: 40px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .topic-buttons button {
+    margin: 10px;
+    padding: 15px 20px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .topic-buttons button.selected {
+    background-color: lightgreen;
+  }
+  
+  .submit-button {
+    margin-top: 20px;
+    padding: 15px 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+  
