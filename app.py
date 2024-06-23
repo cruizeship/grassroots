@@ -40,10 +40,10 @@ def get_news_search_results(query, num_results):
     return articles
 
 def prompt_openai(prompt):
-    api_key = os.getenv('OPENAI_API_KEY')
+    api_key = "sk-proj-1s9pouSGtaM4hjZvYk4fT3BlbkFJsyHMBt3ayAB0AkYZTuBO"
     client = OpenAI(api_key=api_key)
     completion = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-4o",
         messages=[
             {"role": "user", "content": prompt}
         ]
@@ -51,7 +51,7 @@ def prompt_openai(prompt):
     return completion.choices[0].message.content
 
 def fetch_headline_image(query):
-    url = "https://www.google.com/search?q={query}&tbm=isch"
+    url = f"https://www.google.com/search?q={query}&tbm=isch"
 
     page = requests.get(url).text
 
@@ -64,7 +64,7 @@ def fetch_headline_image(query):
         if link:
             links.append(link)
     
-    if links.len() > 1:
+    if len(links) > 1:
         return links[1]
     else:
         return links[0]
@@ -96,12 +96,13 @@ def run_script():
     """
     
     response_content = prompt_openai(prompt)
-
-    for event in response_content:
-        event.append(fetch_headline_image(event[0]))
-
+    
     try:
         response_tuples = ast.literal_eval(response_content)
+        for event in response_tuples:
+            
+            event.append((fetch_headline_image(event[0])))
+
         return jsonify({'headlines': response_tuples})
     except ValueError:
         return jsonify({"error": "Failed to parse OpenAI response"}), 500
